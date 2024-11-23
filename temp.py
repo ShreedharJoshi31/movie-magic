@@ -5,7 +5,8 @@ from llama_index.core.agent import ReActAgent
 from llama_index.llms.openai import OpenAI
 from llama_index.core.tools import FunctionTool
 from llama_index.core import Settings
-from app.functions.functions import get_movies_by_name, get_movies_by_description, get_movies_by_genre, get_movies_by_cast, get_movies_by_language, get_movies_by_mood, get_movies_by_average_rating, get_movies_by_showtime
+from app.functions.movie_functions import get_movies_by_name, get_movies_by_description, get_movies_by_genre, get_movies_by_cast, get_movies_by_language, get_movies_by_mood, get_movies_by_average_rating, get_movies_by_showtime
+from app.functions.payment_functions import create_razorpay_order
 import pandas as pd
 
 
@@ -25,10 +26,11 @@ get_movies_by_language_tool = FunctionTool.from_defaults(fn=get_movies_by_langua
 get_movies_by_mood_tool = FunctionTool.from_defaults(fn=get_movies_by_mood)
 get_movies_by_average_rating_tool = FunctionTool.from_defaults(fn=get_movies_by_average_rating)
 get_movies_by_showtime_tool = FunctionTool.from_defaults(fn=get_movies_by_showtime)
+create_razorpay_order_tool = FunctionTool.from_defaults(fn=create_razorpay_order)
 
-agent = ReActAgent.from_tools([ get_movies_by_name_tool, get_movies_by_description_tool, get_movies_by_genre_tool, get_movies_by_cast_tool, get_movies_by_language_tool, get_movies_by_mood_tool, get_movies_by_average_rating_tool, get_movies_by_showtime_tool ], verbose=True)
+agent = ReActAgent.from_tools([ get_movies_by_name_tool, get_movies_by_description_tool, get_movies_by_genre_tool, get_movies_by_cast_tool, get_movies_by_language_tool, get_movies_by_mood_tool, get_movies_by_average_rating_tool, get_movies_by_showtime_tool, create_razorpay_order_tool ], verbose=True)
 
-response = agent.chat("Which movie has the lowest rating ?")
+response = agent.chat("Buy me a ticket for a movie which has john doe as actor")
 
 print(response)
 
