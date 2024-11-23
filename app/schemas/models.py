@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String, Float, Boolean, DateTime, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
+from datetime import datetime
 
 Base = declarative_base()
 
@@ -13,8 +14,22 @@ class User(Base):
     password = Column(String)
     location = Column(String)
 
+class Review(Base):
+    __tablename__ = 'reviews'
+
+    review_id = Column(Integer, primary_key=True, autoincrement=True)  # Unique review ID
+    movie_id = Column(Integer, ForeignKey('movies.movie_id'), nullable=False)  # FK to Movie table
+    username = Column(String, nullable=False)  # Username of the reviewer
+    review_time = Column(DateTime, default=datetime.now(), nullable=False)  # Time of review
+    review_rating = Column(Float, nullable=False)  # Rating on a scale of 1 to 5
+    review_comment = Column(String, nullable=True)  # Optional comment
+
+    # Relationship with Movie
+    movie = relationship("Movie", back_populates="reviews")
+
 class Movie(Base):
     __tablename__ = 'movies'
+
     movie_id = Column(Integer, primary_key=True, autoincrement=False)
     movie_name = Column(String, nullable=False)
     movie_description = Column(String, nullable=False)
@@ -24,6 +39,7 @@ class Movie(Base):
     mood = Column(String, nullable=False)
     average_rating = Column(Float, nullable=False)
     showtimes = relationship("Showtime", back_populates="movie")
+    reviews = relationship("Review", back_populates="movie")  # New relationship
 
     # SeatMap Table
 class SeatMap(Base):
@@ -60,6 +76,10 @@ class Theater(Base):
     theater_id = Column(String, primary_key=True)  # UUID as a string
     theater_name = Column(String, nullable=False)
     theater_location = Column(String, nullable=False)
+    latitude = Column(Float, nullable=True)  # New column for latitude
+    longitude = Column(Float, nullable=True)  # New column for longitude
+
+    showtimes = relationship("Showtime", back_populates="theater")
 
 # Transaction Table
 class Transaction(Base):
