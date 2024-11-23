@@ -13,6 +13,7 @@ class User(Base):
     password = Column(String)
     location = Column(String)
 
+
 class Movie(Base):
     __tablename__ = 'movies'
     movie_id = Column(Integer, primary_key=True, autoincrement=False)
@@ -23,9 +24,11 @@ class Movie(Base):
     language = Column(String, nullable=False)
     mood = Column(String, nullable=False)
     average_rating = Column(Float, nullable=False)
+
+    # Relationship
     showtimes = relationship("Showtime", back_populates="movie")
 
-    # SeatMap Table
+
 class SeatMap(Base):
     __tablename__ = 'seatmap'
 
@@ -40,7 +43,6 @@ class SeatMap(Base):
     showtime = relationship("Showtime", back_populates="seatmap")
 
 
-# Showtimes Table
 class Showtime(Base):
     __tablename__ = 'showtimes'
 
@@ -55,8 +57,12 @@ class Showtime(Base):
     movie = relationship("Movie", back_populates="showtimes")
     seatmap = relationship("SeatMap", back_populates="showtime")
 
+
 class Theater(Base):
     __tablename__ = 'theaters'
     theater_id = Column(String, primary_key=True)  # UUID as a string
     theater_name = Column(String, nullable=False)
     theater_location = Column(String, nullable=False)
+
+    # Relationship
+    showtimes = relationship("Showtime", back_populates="theater")
