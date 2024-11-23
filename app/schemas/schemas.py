@@ -69,6 +69,22 @@ class Theater(BaseModel):
     class Config:
         orm_mode = True
 
+class SeatMapResponse(BaseModel):
+    seatmap_id: int
+    showtime_id: int
+    seat_no: str
+    seat_category: str
+    seat_price: float
+    seat_status: bool
+
+    class Config:
+        orm_mode = True
+
+class CategoryAvailabilityResponse(BaseModel):
+    category: str
+    total_seats: int
+    available_seats: int
+    price: float
 
 # Resolve forward references
 Movie.update_forward_refs()

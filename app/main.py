@@ -1,4 +1,4 @@
-from app.routes import dummy_routes, user_routes
+from app.routes import dummy_routes, seatmap_routes, user_routes
 # from app.middleware.auth_middleware import AuthMiddleware
 import os
 from fastapi import FastAPI
@@ -42,6 +42,7 @@ Base.metadata.create_all(bind=engine)
 # Include routers
 app.include_router(dummy_routes.router, prefix="/dummy", tags=["dummy"])
 app.include_router(user_routes.router, prefix="/user", tags=["user"])
+app.include_router(seatmap_routes.router, prefix="/seatmap", tags=["seatmap"])
 
 @app.get("/")
 async def root():

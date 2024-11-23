@@ -42,6 +42,41 @@ class SeatMapRepository(BaseRepository):
             raise e
 
     @staticmethod
+    def get_available_seats(db: Session, showtime_id: int) -> List[SeatMap]:
+        """
+        Retrieve all available seats for a specific showtime.
+
+        :param db: Database session
+        :param showtime_id: ID of the showtime
+        :return: List of available SeatMap objects
+        """
+        try:
+            return db.query(SeatMap).filter(
+                SeatMap.showtime_id == showtime_id,
+                SeatMap.seat_status == False  # False means available
+            ).all()
+        except Exception as e:
+            raise e
+
+    @staticmethod
+    def get_seats_by_category(db: Session, showtime_id: int, seat_category: str) -> List[SeatMap]:
+        """
+        Retrieve all seats of a specific category for a showtime.
+
+        :param db: Database session
+        :param showtime_id: ID of the showtime
+        :param seat_category: Category of seats (e.g., VIP, Regular)
+        :return: List of SeatMap objects
+        """
+        try:
+            return db.query(SeatMap).filter(
+                SeatMap.showtime_id == showtime_id,
+                SeatMap.seat_category == seat_category
+            ).all()
+        except Exception as e:
+            raise e
+
+    @staticmethod
     def update_seat_status(db: Session, seatmap_id: int, is_booked: bool) -> Optional[SeatMap]:
         """
         Update a seat's booking status.
@@ -54,6 +89,18 @@ class SeatMapRepository(BaseRepository):
         update_data = {"seat_status": is_booked}
         return BaseRepository.update_entry(db=db, model=SeatMap, update_data=update_data, seatmap_id=seatmap_id)
 
+    @staticmethod
+    def update_seat_price(db: Session, seatmap_id: int, new_price: float) -> Optional[SeatMap]:
+        """
+        Update a seat's price.
+
+        :param db: Database session
+        :param seatmap_id: ID of the seat to update
+        :param new_price: New price for the seat
+        :return: The updated SeatMap object or None if not found
+        """
+        update_data = {"seat_price": new_price}
+        return BaseRepository.update_entry(db=db, model=SeatMap, update_data=update_data, seatmap_id=seatmap_id)
 
     @staticmethod
     def delete_seat(db: Session, seatmap_id: int) -> bool:
