@@ -1,9 +1,12 @@
-from fastapi import Depends, HTTPException, status
+from fastapi import Depends, HTTPException, Response, status
+from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
 from app.services.user_service import UserService
-from app.schemas.schemas import User  # Import your Pydantic schemas
+from app.schemas.schemas import User, Login, UserResponse  # Import your Pydantic schemas
 from app.database import get_db  # Dependency to get the database session
 from app.utils.auth import verify_password  # Import authentication utilities
+
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 
 async def signup(user_data: User, db: Session = Depends(get_db)) -> User:
@@ -18,12 +21,13 @@ async def signup(user_data: User, db: Session = Depends(get_db)) -> User:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
 
 
-async def login(user_credentials: User, db: Session = Depends(get_db)) -> dict:
+async def login(user_credentials: Login, db: Session = Depends(get_db)) -> dict:
     """
     Handle user login.
     """
     # Retrieve the user by email
     user = UserService.get_user_by_email(db=db, email=user_credentials.email)
+    
     if not user:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
@@ -31,21 +35,52 @@ async def login(user_credentials: User, db: Session = Depends(get_db)) -> dict:
         )
 
     # Verify the password
-    if not verify_password(user_credentials.password, user.password):
+    if user_credentials.password != user.password:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid credentials.",
         )
+    
+    # Convert SQLAlchemy model to dict first
+    user_dict = {
+        "id": user.id,
+        "username": user.username,
+        "email": user.email,
+        "location": user.location
+    }
+    
+    # Now validate the dict
+    user_response = UserResponse.model_validate(user_dict)
+    
+    return {
+        "status": "success",
+        "message": "Login successful",
+        "data": {
+            "user": user_response.model_dump()
+        }
+    }
 
-    # Generate an access token
-    # access_token = create_access_token({"sub": user.email})
-    return {"user": user}
 
-
-async def logout() -> dict:
+async def logout(response: Response) -> dict:
     """
     Handle user logout.
+    Simple implementation that just clears the cookie.
     """
-    # In traditional token-based systems, logout is handled client-side by discarding the token.
-    # For a more advanced solution (e.g., token invalidation), implement token blacklisting.
-    return {"message": "Logged out successfully."}
+    # Clear all possible auth cookies
+    response.delete_cookie(key="access_token")
+    response.delete_cookie(key="refresh_token")
+    
+    # Clear with additional security parameters
+    response.delete_cookie(
+        key="access_token",
+        httponly=True,
+        secure=True,
+        samesite="lax",
+        path="/"
+    )
+    
+    return {
+        "status": "success",
+        "message": "Logged out successfully",
+        "data": None
+    }
