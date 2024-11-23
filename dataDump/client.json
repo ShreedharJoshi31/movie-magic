@@ -1,0 +1,13 @@
+{
+    "type": "service_account",
+    "project_id": "lawbot-428008",
+    "private_key_id": "d6f25504de0ec1ee7e76c6f2c5049ca9d8b4ed40",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCy7Kl973zTGUg9\nInY7dI/9UJNvU1ySRiE/mQQ86Gi+GxDV1ojl439R4PQG/l5S6cyup5AkJG3Oj6bj\nw/VxSPoNvWjzsBulOufydc/FxWTQbtIOVjroxcxBY9UzlfDs3Eypi9PasF9xLM5U\n4fWnNhjhgzT62vE6/yIJ+XkORbVugcFaUm/49j3yNolv9c3LqYF36Sdl2qjSucGk\nhCJx4VS18GzmSLIZpb/QE8/1pW60FFyprJrSwapEgAh14EHXD4KS9OOuHFaErnjN\ngBuOzT4+r07ccMCrlrQZlmNe2YM66cpA+2wN6dvvDzfSjpbf/xTr/Onmh4RFp33p\nWeO2nUxlAgMBAAECggEATOG9aLQ95jVgYYiL1jtdXcNAPt9KkT3aLooxFHzm+P0H\nTGNNWr7Y6BVpthGZ9TWqMkgk+yq+FjqKwybiMcXiUIIZdVCwaFy56uitmTUa/ycH\nUorB8GCBxn0/0NU2e4ij1lyTcU5FDIvssvOPC0UHBuvKmZn3etrDRRbx6eyRK8ST\nv7t5IJXYN1g9/B/NmB+fnfZxjpV9lzjDfTFNI3pJkjXbr/L59D83zGVsjzK0sUX8\nD5y7RVBdEd4hm7o3UOuKmLaG7tDaYShSjH3l816UCqZqF5T9PnJ8k21R1IWpZiV2\nGmK5q8NlOnIuUmgLytmYBz1Nfr7LjBE3keEUHjmCxwKBgQDB9y/RqXkkcwLzB1Md\nW1YdKEV7ieE3p1ZJyLz2VpzOazEsZOpCx/45bvOGgBUVEbmKPgy12nSsZJcgQc6F\n5E49kSGl67vmDkj9xpMYHsgtBq0PxLoQb6Fzds9N1F34m1P1yDwZtW7K0HcYXj6I\nD7GFZ6vUaJ/NWwIyFKvaMP87bwKBgQDsJf5OgupQJz1kuXaY26iBnm7O9oOu+JO/\nS0OpmzYm01TnoHnW+7fOWGNMv7zHEZ1lHxiUZxtNf5dsHtpif6UIlnQF/4E90oeA\nNeFJcWfnFexlB0I10sV8JQkP/OmV8W9iB5ZYN+Ydc9pGGAGoTq7/EP9iHgbko8a/\nuSpTb6FbawKBgGAFuwqUV4CP31noumDCIrN0iFFMRM6EbNdCJSneXuphboqHuuEs\nmNJd9vkS110C1VN2vFwatb/SXG5/pXnrOECKZJn7RZ3yXHglohRCyN5he7NetK4G\nVWsP2jixdYPpgXsfkYE4rIyC/zJ1FYfOHRfp5srUsKe88i1QxnLR5sjJAoGBAMDM\nHB35YFfkUYlkqeEOpTp+ITWzqbs2k1nAlxNn9wQn0c/yAsd0Z5J+M0Q73mIgjYI7\nqxOuQmo5W2UYo297iz/BpiQngFr7AUm5s58EibHvAjtRe8r5s+YxTn7RG9wha7B7\nRVHtAWDWb0R+4QuKgfEY7Ygrv7D3zZJGGLpaD0DVAoGBAL2RMciBKMbW4Q9wn6/Y\n6J4gfplocbQd6wjVrvsdQUdrtTYv1sLVytT+i3UkcisNGhBUMmOSIGYOpt8ByY+8\nKnWGaYX2LsNGBBQcpy1SGRhvdOlaG9M/hrZe1RMCsme/nxFd83G4ziTPNZpVLt7o\nhJyE9nxwn8K/gZQ1uhfqKWxU\n-----END PRIVATE KEY-----\n",
+    "client_email": "lawbot-gaurav-laptop@lawbot-428008.iam.gserviceaccount.com",
+    "client_id": "101597350410312431387",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/lawbot-gaurav-laptop%40lawbot-428008.iam.gserviceaccount.com",
+    "universe_domain": "googleapis.com"
+  }

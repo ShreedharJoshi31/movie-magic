@@ -70,6 +70,32 @@ class Theater(BaseModel):
         from_attributes = True
 
 
+class Transaction(BaseModel):
+    transaction_id: str
+    user_id: str
+    payment_status: bool
+    transaction_time: datetime
+    bookings: List["Booking"] = []  # Relationship to Booking
+
+    class Config:
+        orm_mode = True
+
+class Booking(BaseModel):
+    booking_id: int
+    user_id: str
+    transaction_id: str
+    user_name: str
+    movie_name: str
+    theater: str
+    show_time: datetime
+    seat: str
+    booking_time: datetime
+    transaction: Optional[Transaction]  # Relationship to Transaction
+
+    class Config:
+        orm_mode = True
+
+
 # Resolve forward references
 Movie.update_forward_refs()
 Showtime.update_forward_refs()
