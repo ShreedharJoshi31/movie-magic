@@ -1,6 +1,6 @@
 import googlemaps
 # Initialize Google Maps client
-GOOGLE_MAPS_API_KEY = "AIzaSyAV0IGRuYGVwQH5U6vY7o9YSANvAhWLsDc"  # Replace with your actual API key
+GOOGLE_MAPS_API_KEY = ""  # Replace with your actual API key
 gmaps = googlemaps.Client(key=GOOGLE_MAPS_API_KEY)
 
 def get_lat_lon(location):

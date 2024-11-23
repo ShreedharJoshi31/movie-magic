@@ -5,7 +5,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 # Initialize Google Maps client
-GOOGLE_MAPS_API_KEY = "AIzaSyAV0IGRuYGVwQH5U6vY7o9YSANvAhWLsDc"  # Replace with your actual API key
+GOOGLE_MAPS_API_KEY = ""  # Replace with your actual API key
 gmaps = googlemaps.Client(key=GOOGLE_MAPS_API_KEY)
 
 # Define the database model
@@ -20,7 +20,7 @@ class Theater(Base):
     longitude = Column(Float, nullable=True)  # New column for longitude
 
 # Database connection (update with your PostgreSQL credentials)
-DATABASE_URL = "postgresql://avnadmin:AVNS_B__mg-mo4ERejoa7Rh9@pg-235500ec-shreedharjoshi03-f6ce.b.aivencloud.com:10885/defaultdb"  # Replace with your database URL
+DATABASE_URL = ""  # Replace with your database URL
 engine = create_engine(DATABASE_URL)
 
 # Create the theaters table (if not already created)

@@ -114,7 +114,7 @@ class Booking(Base):
     # Relationship to transaction
     transaction = relationship("Transaction", back_populates="bookings")
 
-engine = create_engine('postgresql://avnadmin:AVNS_B__mg-mo4ERejoa7Rh9@pg-235500ec-shreedharjoshi03-f6ce.b.aivencloud.com:10885/defaultdb', echo=True)
+engine = create_engine('', echo=True)
 Base.metadata.create_all(engine)
 
 Session = sessionmaker(bind=engine)
