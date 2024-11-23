@@ -1,5 +1,5 @@
 from app.routes import dummy_routes, user_routes
-from app.middleware.auth_middleware import AuthMiddleware
+# from app.middleware.auth_middleware import AuthMiddleware
 import os
 from fastapi import FastAPI
 # from app.routes import chat_routes, document_routes

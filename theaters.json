@@ -1,0 +1,502 @@
+[
+    {
+        "theater_id": "45342ff9-a164-4b68-8e1a-3e28e2e9a355",
+        "theater_name": "Golden Cineworld",
+        "theater_location": "Vile Parle"
+    },
+    {
+        "theater_id": "e75166ee-dab5-40c9-8aa4-950a51fa5120",
+        "theater_name": "Galaxy Studio",
+        "theater_location": "Kandivali"
+    },
+    {
+        "theater_id": "7468af9f-b6e1-47e7-8a0a-4daf0d26f890",
+        "theater_name": "Silver House",
+        "theater_location": "Mulund"
+    },
+    {
+        "theater_id": "f8ac12ef-6939-4879-9c47-b2454119914a",
+        "theater_name": "Majestic Cineworld",
+        "theater_location": "Goregaon"
+    },
+    {
+        "theater_id": "0f9988da-02d1-4a80-aeed-e46ee50e22ff",
+        "theater_name": "Majestic Hall",
+        "theater_location": "Dadar"
+    },
+    {
+        "theater_id": "54109de8-7850-4ed9-807e-4fab9944954f",
+        "theater_name": "Galaxy Theater",
+        "theater_location": "Goregaon"
+    },
+    {
+        "theater_id": "cc7b24ee-a509-4bc5-a73c-7ef67665ebc4",
+        "theater_name": "Cineplex Cinemas",
+        "theater_location": "Malad"
+    },
+    {
+        "theater_id": "05e1e841-1b8f-42cc-80ef-5d908be8c56b",
+        "theater_name": "Infinity House",
+        "theater_location": "Dadar"
+    },
+    {
+        "theater_id": "50bfbe39-3fa5-493e-abf9-24d2c1a4bcf8",
+        "theater_name": "Phoenix Screen",
+        "theater_location": "Andheri"
+    },
+    {
+        "theater_id": "5ac77696-6831-44ea-be95-521724fe5d83",
+        "theater_name": "Cineplex Cinemas",
+        "theater_location": "Versova"
+    },
+    {
+        "theater_id": "678012cc-28e1-4af7-8586-9d42a8330c90",
+        "theater_name": "Regal Theater",
+        "theater_location": "Dadar"
+    },
+    {
+        "theater_id": "43f9ce91-2e18-4597-bbef-aa9d65934ec2",
+        "theater_name": "Silver Arena",
+        "theater_location": "Goregaon"
+    },
+    {
+        "theater_id": "1e21629d-7a85-43ab-92f0-924beccdd918",
+        "theater_name": "Silver Cinemas",
+        "theater_location": "Andheri"
+    },
+    {
+        "theater_id": "13ceaf76-882d-4218-843f-1ef1d79789e0",
+        "theater_name": "Grand House",
+        "theater_location": "Versova"
+    },
+    {
+        "theater_id": "edb44ca5-8dee-45f2-a002-9fc195acde8d",
+        "theater_name": "Galaxy Studio",
+        "theater_location": "Goregaon"
+    },
+    {
+        "theater_id": "abbc14be-8b76-46a7-8117-1c02107bff04",
+        "theater_name": "Silver Arena",
+        "theater_location": "Powai"
+    },
+    {
+        "theater_id": "3c882d8e-71b9-4ae5-b670-5e4d20394cfa",
+        "theater_name": "Star Palace",
+        "theater_location": "Thane"
+    },
+    {
+        "theater_id": "44629134-995f-402d-a36b-5a13ba779ed0",
+        "theater_name": "Regal Theater",
+        "theater_location": "Borivali"
+    },
+    {
+        "theater_id": "01e10547-93a9-4988-a752-24ea7bd959e7",
+        "theater_name": "Star House",
+        "theater_location": "Vile Parle"
+    },
+    {
+        "theater_id": "b6df835a-9b21-4c8d-b5da-90914ad03b10",
+        "theater_name": "Cineplex Cinemas",
+        "theater_location": "Powai"
+    },
+    {
+        "theater_id": "60a7aded-69ef-4afe-b77d-3fbbdd44430b",
+        "theater_name": "Star Screen",
+        "theater_location": "Bandra"
+    },
+    {
+        "theater_id": "a100f655-8924-4532-85b3-a3e5c137cb4c",
+        "theater_name": "Star Multiplex",
+        "theater_location": "Malad"
+    },
+    {
+        "theater_id": "e31d9552-2935-47f6-b40e-31d7bfb04eff",
+        "theater_name": "Cineplex House",
+        "theater_location": "Dadar"
+    },
+    {
+        "theater_id": "5f62df6e-cc22-4f00-a410-43af004105e1",
+        "theater_name": "Golden Palace",
+        "theater_location": "Versova"
+    },
+    {
+        "theater_id": "b3d7e4c6-f590-4ad7-b9af-ea82e106ea90",
+        "theater_name": "Grand Arena",
+        "theater_location": "Thane"
+    },
+    {
+        "theater_id": "eb249198-f319-4c1f-ab0b-730c898c5a62",
+        "theater_name": "Regal Cinemas",
+        "theater_location": "Andheri"
+    },
+    {
+        "theater_id": "25dc474e-8b78-4f48-8dd9-d1d534e5bc7d",
+        "theater_name": "Regal Cineworld",
+        "theater_location": "Versova"
+    },
+    {
+        "theater_id": "ed9583bc-529b-4177-b693-cceff4168f7a",
+        "theater_name": "Cineplex Palace",
+        "theater_location": "Borivali"
+    },
+    {
+        "theater_id": "02a92640-bb14-4e60-a13a-71558615bd4e",
+        "theater_name": "Majestic Cineworld",
+        "theater_location": "Santacruz"
+    },
+    {
+        "theater_id": "10d8a9e4-9271-41c9-919e-173fa3645a94",
+        "theater_name": "Golden Cinemas",
+        "theater_location": "Juhu"
+    },
+    {
+        "theater_id": "9b941c4b-5a89-4379-8573-53a08db01e5a",
+        "theater_name": "Phoenix Screen",
+        "theater_location": "Bandra"
+    },
+    {
+        "theater_id": "43f3d818-8c0b-4878-be49-65dc77ed0ddf",
+        "theater_name": "Grand Studio",
+        "theater_location": "Powai"
+    },
+    {
+        "theater_id": "78beaaf9-1e62-44b7-8e90-8f25b07fccf9",
+        "theater_name": "Phoenix Screen",
+        "theater_location": "Powai"
+    },
+    {
+        "theater_id": "27b669c9-db86-4189-8dcb-777098fabcd9",
+        "theater_name": "Majestic Cineworld",
+        "theater_location": "Mulund"
+    },
+    {
+        "theater_id": "939e1ce7-4b24-4c52-bd52-52c85ced4138",
+        "theater_name": "Silver Cinemas",
+        "theater_location": "Wadala"
+    },
+    {
+        "theater_id": "8da1aee2-601c-4ad9-a2ea-c7bdbb0e37c2",
+        "theater_name": "Silver Screen",
+        "theater_location": "Malad"
+    },
+    {
+        "theater_id": "a9268007-e329-4655-a8b4-5548e953e2c1",
+        "theater_name": "Majestic Screen",
+        "theater_location": "Borivali"
+    },
+    {
+        "theater_id": "b1e66598-ec4c-41e1-9cb3-4b8db3c11ff3",
+        "theater_name": "Infinity House",
+        "theater_location": "Vile Parle"
+    },
+    {
+        "theater_id": "1fd530c6-be82-4710-849b-c625b1dcb0d1",
+        "theater_name": "Majestic Arena",
+        "theater_location": "Santacruz"
+    },
+    {
+        "theater_id": "f03d343a-cb60-434e-b7fd-eaac1570ded2",
+        "theater_name": "Silver Screen",
+        "theater_location": "Malad"
+    },
+    {
+        "theater_id": "d7c6fd01-dd1c-49e4-bc4d-dba1ec0ad2fe",
+        "theater_name": "Golden Screen",
+        "theater_location": "Andheri"
+    },
+    {
+        "theater_id": "7e8a4f7c-066e-43e3-860b-e73ffe271541",
+        "theater_name": "Golden House",
+        "theater_location": "Wadala"
+    },
+    {
+        "theater_id": "890964f4-cefa-4dd5-9a20-3060bb381f1c",
+        "theater_name": "Majestic Arena",
+        "theater_location": "Juhu"
+    },
+    {
+        "theater_id": "6cc1d6f7-bd55-4085-ad10-ddefb1c99d0a",
+        "theater_name": "Regal Arena",
+        "theater_location": "Mulund"
+    },
+    {
+        "theater_id": "36d259ae-6fed-48d2-87c1-1c0f9122bd30",
+        "theater_name": "Grand Screen",
+        "theater_location": "Wadala"
+    },
+    {
+        "theater_id": "23a69af4-70a9-47b0-83f9-202f1adcd85d",
+        "theater_name": "Grand Arena",
+        "theater_location": "Andheri"
+    },
+    {
+        "theater_id": "1b47e4ca-b2bc-4859-8d87-5f3e4c126a39",
+        "theater_name": "Cineplex Palace",
+        "theater_location": "Bandra"
+    },
+    {
+        "theater_id": "ec2e9ffb-a251-4e41-abb6-0ef694fa8fdd",
+        "theater_name": "Regal Palace",
+        "theater_location": "Juhu"
+    },
+    {
+        "theater_id": "7179de59-793d-4611-ba4c-34ef81943e45",
+        "theater_name": "Star Cinemas",
+        "theater_location": "Thane"
+    },
+    {
+        "theater_id": "1942b2f3-f762-4b06-9170-13ae4d748904",
+        "theater_name": "Galaxy Palace",
+        "theater_location": "Malad"
+    },
+    {
+        "theater_id": "037e0317-4e7f-44e9-8e40-19ca17e88cc4",
+        "theater_name": "Golden Hall",
+        "theater_location": "Mulund"
+    },
+    {
+        "theater_id": "6811d5ca-6266-45e3-8597-5a660dd3a51e",
+        "theater_name": "Silver Multiplex",
+        "theater_location": "Mulund"
+    },
+    {
+        "theater_id": "f17573c7-3b4d-4b49-b5f2-1a7c7a6a0036",
+        "theater_name": "Grand Palace",
+        "theater_location": "Thane"
+    },
+    {
+        "theater_id": "1b435310-c90f-46c1-b104-d5d8cb52163e",
+        "theater_name": "Majestic Studio",
+        "theater_location": "Wadala"
+    },
+    {
+        "theater_id": "b40ebc7c-e699-41f7-a2b1-edabbe02dad3",
+        "theater_name": "Golden Arena",
+        "theater_location": "Thane"
+    },
+    {
+        "theater_id": "a55a6437-79e4-457b-baef-794c2427a0ab",
+        "theater_name": "Regal Studio",
+        "theater_location": "Mulund"
+    },
+    {
+        "theater_id": "fb9a0b01-3bc7-46f0-8081-894361c85a46",
+        "theater_name": "Galaxy Arena",
+        "theater_location": "Juhu"
+    },
+    {
+        "theater_id": "f6ce5602-f5e4-4838-ae78-9be794a4ec64",
+        "theater_name": "Grand Studio",
+        "theater_location": "Borivali"
+    },
+    {
+        "theater_id": "fb960946-f4d8-49c4-b54e-ecb424a18411",
+        "theater_name": "Phoenix Studio",
+        "theater_location": "Vile Parle"
+    },
+    {
+        "theater_id": "b0b812b2-493c-4e51-b19a-ea9fc1dee850",
+        "theater_name": "Regal Palace",
+        "theater_location": "Mulund"
+    },
+    {
+        "theater_id": "e08d3c7e-8929-4e37-9e26-a637b362abd1",
+        "theater_name": "Phoenix House",
+        "theater_location": "Dadar"
+    },
+    {
+        "theater_id": "9b53ee45-e5b9-4c3b-bb86-e0fcbe742c18",
+        "theater_name": "Majestic Studio",
+        "theater_location": "Bandra"
+    },
+    {
+        "theater_id": "2b3de6f2-66e4-4ab3-ab6e-c6f062142f54",
+        "theater_name": "Majestic Screen",
+        "theater_location": "Santacruz"
+    },
+    {
+        "theater_id": "65b5b5d7-9bf3-406e-86d2-2eb493298bc4",
+        "theater_name": "Golden Cinemas",
+        "theater_location": "Powai"
+    },
+    {
+        "theater_id": "3efc9bfe-8f12-425f-afac-e58b8592bb49",
+        "theater_name": "Grand Cinemas",
+        "theater_location": "Thane"
+    },
+    {
+        "theater_id": "87fb119c-84b8-4e01-9e38-d39c1724ddd9",
+        "theater_name": "Phoenix Theater",
+        "theater_location": "Goregaon"
+    },
+    {
+        "theater_id": "cedb045d-7e7d-4ae5-9f78-257bf87ffaa5",
+        "theater_name": "Majestic Multiplex",
+        "theater_location": "Vile Parle"
+    },
+    {
+        "theater_id": "5b1d4a2b-f9ac-4838-904f-442a4be4f44e",
+        "theater_name": "Star Hall",
+        "theater_location": "Thane"
+    },
+    {
+        "theater_id": "be7f7269-be67-4df2-baf6-8b2dcea697d9",
+        "theater_name": "Grand Cinemas",
+        "theater_location": "Juhu"
+    },
+    {
+        "theater_id": "515e951f-f7c3-43dc-a22b-621638ae2107",
+        "theater_name": "Cineplex Hall",
+        "theater_location": "Dadar"
+    },
+    {
+        "theater_id": "c7bc5ec4-825b-44b3-b184-a6ea9ad218cf",
+        "theater_name": "Regal Cinemas",
+        "theater_location": "Goregaon"
+    },
+    {
+        "theater_id": "316df88b-fad5-4324-8077-81b66a7bc1b9",
+        "theater_name": "Star Studio",
+        "theater_location": "Juhu"
+    },
+    {
+        "theater_id": "fe9f8e4f-fb81-4fc1-9620-dddd770fbb2a",
+        "theater_name": "Grand Hall",
+        "theater_location": "Dadar"
+    },
+    {
+        "theater_id": "1bc51373-e111-4358-8b35-057fa6f08d93",
+        "theater_name": "Phoenix Studio",
+        "theater_location": "Malad"
+    },
+    {
+        "theater_id": "7ef1f76f-b6df-4a1e-9c47-5f77178dbedc",
+        "theater_name": "Silver Theater",
+        "theater_location": "Santacruz"
+    },
+    {
+        "theater_id": "2bfc2182-bbd4-45f7-951c-a121b66f66f8",
+        "theater_name": "Majestic Hall",
+        "theater_location": "Mulund"
+    },
+    {
+        "theater_id": "b7988822-22a2-4ef4-8108-47b92669f251",
+        "theater_name": "Infinity Hall",
+        "theater_location": "Powai"
+    },
+    {
+        "theater_id": "53f11efa-ff3d-4ade-811f-d73d6c13f141",
+        "theater_name": "Silver Hall",
+        "theater_location": "Versova"
+    },
+    {
+        "theater_id": "21609a84-41c8-4321-af4a-0711cc254fff",
+        "theater_name": "Infinity Palace",
+        "theater_location": "Vile Parle"
+    },
+    {
+        "theater_id": "3973d832-c1c6-4250-a7aa-4ad6c34146a7",
+        "theater_name": "Silver Theater",
+        "theater_location": "Borivali"
+    },
+    {
+        "theater_id": "0aa956e1-a952-4e0f-899d-6b983b719d37",
+        "theater_name": "Galaxy Studio",
+        "theater_location": "Versova"
+    },
+    {
+        "theater_id": "5f0ac950-8b77-4ea0-9913-069c152bc4ff",
+        "theater_name": "Majestic Arena",
+        "theater_location": "Powai"
+    },
+    {
+        "theater_id": "22360dc7-3ac7-4821-aab1-251f5033f9d4",
+        "theater_name": "Phoenix Multiplex",
+        "theater_location": "Versova"
+    },
+    {
+        "theater_id": "46c56a13-5a62-4549-9050-518619f3e7f5",
+        "theater_name": "Phoenix House",
+        "theater_location": "Powai"
+    },
+    {
+        "theater_id": "66ab2bf8-7acc-4f66-8293-2e2f5a4abea0",
+        "theater_name": "Regal Studio",
+        "theater_location": "Versova"
+    },
+    {
+        "theater_id": "56a4b8cb-e7bf-450c-b859-a32fa8736282",
+        "theater_name": "Silver House",
+        "theater_location": "Juhu"
+    },
+    {
+        "theater_id": "52614bf7-4258-404e-aede-128ca107c127",
+        "theater_name": "Phoenix Palace",
+        "theater_location": "Santacruz"
+    },
+    {
+        "theater_id": "d8bcbd41-40fa-4dab-8f61-ae39a1c696d1",
+        "theater_name": "Star Theater",
+        "theater_location": "Wadala"
+    },
+    {
+        "theater_id": "eef68bcc-8877-490d-a2f0-4c2770ca9484",
+        "theater_name": "Star House",
+        "theater_location": "Juhu"
+    },
+    {
+        "theater_id": "0c8dd75f-8d7f-43ae-80ba-122f15edcd77",
+        "theater_name": "Regal Studio",
+        "theater_location": "Thane"
+    },
+    {
+        "theater_id": "1ccb1f86-b247-4190-8d2a-a5d3caac1574",
+        "theater_name": "Silver Screen",
+        "theater_location": "Goregaon"
+    },
+    {
+        "theater_id": "4428e36b-0c41-4da5-ae3e-d6e318df776a",
+        "theater_name": "Regal Cineworld",
+        "theater_location": "Malad"
+    },
+    {
+        "theater_id": "27115638-d052-4f40-8764-5883d9012f39",
+        "theater_name": "Silver Studio",
+        "theater_location": "Dadar"
+    },
+    {
+        "theater_id": "18ab1bcb-e6d7-4bf4-abc2-8aaa96eabaf7",
+        "theater_name": "Infinity Palace",
+        "theater_location": "Versova"
+    },
+    {
+        "theater_id": "ba223b97-f5ac-4200-962d-149fda78fc2b",
+        "theater_name": "Phoenix Theater",
+        "theater_location": "Vile Parle"
+    },
+    {
+        "theater_id": "63c9755a-5159-45dd-b271-fb355c083234",
+        "theater_name": "Infinity Theater",
+        "theater_location": "Juhu"
+    },
+    {
+        "theater_id": "b52d498e-be88-4283-8923-0db62f5bfe3e",
+        "theater_name": "Grand Palace",
+        "theater_location": "Powai"
+    },
+    {
+        "theater_id": "b81bf755-5501-402b-8083-5325bfdbe651",
+        "theater_name": "Silver Screen",
+        "theater_location": "Wadala"
+    },
+    {
+        "theater_id": "2e798447-ff0e-45c1-bc51-855b229d1d92",
+        "theater_name": "Cineplex Palace",
+        "theater_location": "Vile Parle"
+    },
+    {
+        "theater_id": "41dd4732-c5e7-4310-a042-613a7f02b92e",
+        "theater_name": "Golden Cinemas",
+        "theater_location": "Bandra"
+    }
+]

@@ -1,0 +1,152 @@
+[
+    {
+        "movie_id": 1,
+        "movie_name": "Shadows of Tomorrow",
+        "movie_description": "A dystopian thriller about a battle between AI and humans for control of the future.",
+        "genre": "Sci-Fi",
+        "cast": "John Doe, Emma Clarke, Liam Blake",
+        "language": "English",
+        "mood": "Intense",
+        "average_rating": 4.3
+    },
+    {
+        "movie_id": 2,
+        "movie_name": "Love in the Rain",
+        "movie_description": "A heartwarming romance between two strangers who meet during a storm in Paris.",
+        "genre": "Romance",
+        "cast": "Sophie Adams, Ethan Turner",
+        "language": "French",
+        "mood": "Romantic",
+        "average_rating": 4.7
+    },
+    {
+        "movie_id": 3,
+        "movie_name": "Galactic Raiders",
+        "movie_description": "A group of misfit space explorers uncovers a secret that could save their galaxy.",
+        "genre": "Action/Sci-Fi",
+        "cast": "Chris Vega, Mia Carter, Ron Hale",
+        "language": "English",
+        "mood": "Adventurous",
+        "average_rating": 4.1
+    },
+    {
+        "movie_id": 4,
+        "movie_name": "The Silent Witness",
+        "movie_description": "A deaf girl becomes the key to solving a complex murder mystery in a small town.",
+        "genre": "Mystery/Thriller",
+        "cast": "Lily Bennett, Mark Johnson, Eva Smith",
+        "language": "English",
+        "mood": "Suspenseful",
+        "average_rating": 4.5
+    },
+    {
+        "movie_id": 5,
+        "movie_name": "The Forgotten Melody",
+        "movie_description": "A struggling pianist discovers a magical melody that changes her life forever.",
+        "genre": "Drama/Fantasy",
+        "cast": "Alice Moore, Leo Grant",
+        "language": "Italian",
+        "mood": "Emotional",
+        "average_rating": 4.6
+    },
+    {
+        "movie_id": 6,
+        "movie_name": "Beyond the Horizon",
+        "movie_description": "Two pilots push the boundaries of aviation in a race to break the sound barrier.",
+        "genre": "Historical Drama",
+        "cast": "Jack Harper, Olivia Langston",
+        "language": "English",
+        "mood": "Inspiring",
+        "average_rating": 4.4
+    },
+    {
+        "movie_id": 7,
+        "movie_name": "The Emerald Curse",
+        "movie_description": "An archaeologist fights to break an ancient curse while exploring a deadly jungle.",
+        "genre": "Adventure",
+        "cast": "Jake Hunter, Emma Reyes",
+        "language": "Spanish",
+        "mood": "Exciting",
+        "average_rating": 4.2
+    },
+    {
+        "movie_id": 8,
+        "movie_name": "The Puppet Master",
+        "movie_description": "A psychological thriller about a puppeteer whose creations start controlling him.",
+        "genre": "Thriller",
+        "cast": "Noah King, Ava Monroe",
+        "language": "English",
+        "mood": "Creepy",
+        "average_rating": 4.0
+    },
+    {
+        "movie_id": 9,
+        "movie_name": "Laughter on the Edge",
+        "movie_description": "A stand-up comedian navigates a turbulent personal life while chasing his big break.",
+        "genre": "Comedy/Drama",
+        "cast": "Ben Rivers, Chloe Hart",
+        "language": "English",
+        "mood": "Bittersweet",
+        "average_rating": 4.1
+    },
+    {
+        "movie_id": 10,
+        "movie_name": "Rise of the Phoenix",
+        "movie_description": "A warrior seeks revenge after her kingdom is destroyed by a rival empire.",
+        "genre": "Action/Fantasy",
+        "cast": "Jade Lin, Marcus Stone",
+        "language": "Mandarin",
+        "mood": "Heroic",
+        "average_rating": 4.3
+    },
+    {
+        "movie_id": 11,
+        "movie_name": "Starlight Serenade",
+        "movie_description": "A young singer-songwriter finds love and fame but struggles to stay true to herself.",
+        "genre": "Musical/Drama",
+        "cast": "Clara Wells, Dylan Brooks",
+        "language": "English",
+        "mood": "Uplifting",
+        "average_rating": 4.5
+    },
+    {
+        "movie_id": 12,
+        "movie_name": "The Last Voyage",
+        "movie_description": "A retired sea captain is forced to sail one last time on a dangerous rescue mission.",
+        "genre": "Adventure/Drama",
+        "cast": "Edward Hall, Grace Simmons",
+        "language": "English",
+        "mood": "Tense",
+        "average_rating": 4.2
+    },
+    {
+        "movie_id": 13,
+        "movie_name": "Whispers in the Dark",
+        "movie_description": "A paranormal investigator is haunted by a malevolent spirit from her past.",
+        "genre": "Horror",
+        "cast": "Sarah Blake, Daniel West",
+        "language": "English",
+        "mood": "Haunting",
+        "average_rating": 3.9
+    },
+    {
+        "movie_id": 14,
+        "movie_name": "Code Breakers",
+        "movie_description": "A group of young hackers fights against a corrupt corporation controlling the global internet.",
+        "genre": "Tech Thriller",
+        "cast": "Alex Carter, Mia Lewis",
+        "language": "English",
+        "mood": "Engaging",
+        "average_rating": 4.3
+    },
+    {
+        "movie_id": 15,
+        "movie_name": "A Taste of Summer",
+        "movie_description": "A small-town chef competes in a national cooking competition while rediscovering her passion.",
+        "genre": "Slice of Life",
+        "cast": "Olivia Scott, Liam Mason",
+        "language": "English",
+        "mood": "Lighthearted",
+        "average_rating": 4.6
+    }
+]
