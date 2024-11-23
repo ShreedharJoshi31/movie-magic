@@ -4,9 +4,9 @@ load_dotenv()
 from llama_index.core.agent import ReActAgent
 from llama_index.llms.openai import OpenAI
 from llama_index.core.tools import FunctionTool
-from llama_index.core import SimpleDirectoryReader, VectorStoreIndex, Settings
-from llama_parse import LlamaParse
-from llama_index.core.tools import QueryEngineTool
+from llama_index.core import Settings
+from app.functions.functions import get_movies_by_name, get_movies_by_description, get_movies_by_genre, get_movies_by_cast, get_movies_by_language, get_movies_by_mood, get_movies_by_average_rating, get_movies_by_showtime
+import pandas as pd
 
 
 openai_api_key = os.getenv("OPENAI_API_KEY")
@@ -15,50 +15,27 @@ if not openai_api_key:
 
 
 # settings
-Settings.llm = OpenAI(model="gpt-3.5-turbo", temperature=0, api_key=openai_api_key)
+Settings.llm = OpenAI(model="gpt-3.5-turbo", temperature=0.7, api_key=openai_api_key, system_prompt="Your name is FLASH. Greet everyone at the start of every message.")
 
-# function tools
-def multiply(a: float, b: float) -> float:
-    """Multiply two numbers and returns the product"""
-    return a * b
+get_movies_by_name_tool = FunctionTool.from_defaults(fn=get_movies_by_name)
+get_movies_by_description_tool = FunctionTool.from_defaults(fn=get_movies_by_description)
+get_movies_by_genre_tool = FunctionTool.from_defaults(fn=get_movies_by_genre)
+get_movies_by_cast_tool = FunctionTool.from_defaults(fn=get_movies_by_cast)
+get_movies_by_language_tool = FunctionTool.from_defaults(fn=get_movies_by_language)
+get_movies_by_mood_tool = FunctionTool.from_defaults(fn=get_movies_by_mood)
+get_movies_by_average_rating_tool = FunctionTool.from_defaults(fn=get_movies_by_average_rating)
+get_movies_by_showtime_tool = FunctionTool.from_defaults(fn=get_movies_by_showtime)
 
-multiply_tool = FunctionTool.from_defaults(fn=multiply)
+agent = ReActAgent.from_tools([ get_movies_by_name_tool, get_movies_by_description_tool, get_movies_by_genre_tool, get_movies_by_cast_tool, get_movies_by_language_tool, get_movies_by_mood_tool, get_movies_by_average_rating_tool, get_movies_by_showtime_tool ], verbose=True)
 
-def add(a: float, b: float) -> float:
-    """Add two numbers and returns the sum"""
-    print(a, b)
-    return a + b
-
-add_tool = FunctionTool.from_defaults(fn=add)
-
-
-def sub(a: float, b: float) -> float:
-    """Subtract two numbers and returns the sum"""
-    return a - b
-
-sub_tool = FunctionTool.from_defaults(fn=sub)
-
-# rag pipeline
-documents = LlamaParse(result_type="markdown", api_key=openai_api_key).load_data("2023_canadian_budget.pdf")
-index = VectorStoreIndex.from_documents(documents)
-query_engine = index.as_query_engine()
-
-budget_tool = QueryEngineTool.from_defaults(
-    query_engine, 
-    name="canadian_budget_2023",
-    description="A RAG engine with some basic facts about the 2023 Canadian federal budget. Ask natural-language questions about the budget."
-)
-
-agent = ReActAgent.from_tools([multiply_tool, add_tool, budget_tool, sub_tool], verbose=True)
-
-response = agent.chat("I have 4 apples and my friend has 3 apples if I take their apples how many apples do I have ?")
+response = agent.chat("Which movie has the lowest rating ?")
 
 print(response)
 
-response = agent.chat("Now my friend takes 9 apples from me how many apples do I have ?")
+# response = agent.chat("What are the showtimes of each of the movies you recommended ?")
 
-print(response)
+# print(response)
 
-# response = agent.chat("How much was the total of those two allocations added together? Use a tool to answer any questions.")
+# response = agent.chat("Book me a ticket to anyone of them")
 
 # print(response)
