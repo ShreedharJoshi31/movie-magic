@@ -30,7 +30,7 @@ create_razorpay_order_tool = FunctionTool.from_defaults(fn=create_razorpay_order
 
 agent = ReActAgent.from_tools([ get_movies_by_name_tool, get_movies_by_description_tool, get_movies_by_genre_tool, get_movies_by_cast_tool, get_movies_by_language_tool, get_movies_by_mood_tool, get_movies_by_average_rating_tool, get_movies_by_showtime_tool, create_razorpay_order_tool ], verbose=True)
 
-response = agent.chat("Buy me a ticket for a movie which has john doe as actor")
+response = agent.chat("Suggest me some sci fi movies")
 
 print(response)
 
