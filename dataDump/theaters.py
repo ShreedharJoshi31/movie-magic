@@ -1,8 +1,12 @@
 import json
-import uuid
-from sqlalchemy import create_engine, Column, String
+import googlemaps
+from sqlalchemy import create_engine, Column, String, Float
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+
+# Initialize Google Maps client
+GOOGLE_MAPS_API_KEY = "AIzaSyAV0IGRuYGVwQH5U6vY7o9YSANvAhWLsDc"  # Replace with your actual API key
+gmaps = googlemaps.Client(key=GOOGLE_MAPS_API_KEY)
 
 # Define the database model
 Base = declarative_base()
@@ -12,32 +16,48 @@ class Theater(Base):
     theater_id = Column(String, primary_key=True)  # UUID as a string
     theater_name = Column(String, nullable=False)
     theater_location = Column(String, nullable=False)
+    latitude = Column(Float, nullable=True)  # New column for latitude
+    longitude = Column(Float, nullable=True)  # New column for longitude
 
 # Database connection (update with your PostgreSQL credentials)
-DATABASE_URL = ""
+DATABASE_URL = "postgresql://avnadmin:AVNS_B__mg-mo4ERejoa7Rh9@pg-235500ec-shreedharjoshi03-f6ce.b.aivencloud.com:10885/defaultdb"  # Replace with your database URL
 engine = create_engine(DATABASE_URL)
 
-# Create the theaters table
+# Create the theaters table (if not already created)
 Base.metadata.create_all(engine)
 
 # Create a session
 Session = sessionmaker(bind=engine)
 session = Session()
 
-# Read the JSON file
-with open('theaters.json', 'r') as file:
-    theaters_data = json.load(file)
+# Function to get latitude and longitude for a location
+def get_lat_lon(location):
+    try:
+        geocode_result = gmaps.geocode(location)
+        if geocode_result:
+            lat = geocode_result[0]['geometry']['location']['lat']
+            lng = geocode_result[0]['geometry']['location']['lng']
+            return lat, lng
+    except Exception as e:
+        print(f"Error fetching geocode for {location}: {e}")
+    return None, None
 
-# Insert data into the database
-for theater in theaters_data:
-    theater_entry = Theater(
-        theater_id=theater['theater_id'],
-        theater_name=theater['theater_name'],
-        theater_location=theater['theater_location']
-    )
-    session.add(theater_entry)
+# Fetch all theaters from the database
+theaters = session.query(Theater).all()
 
-# Commit the session
+# Update latitude and longitude for each theater
+for theater in theaters:
+    if theater.latitude is None or theater.longitude is None:  # Only update if not already set
+        print(f"Fetching coordinates for location: {theater.theater_location}")
+        latitude, longitude = get_lat_lon(theater.theater_location)
+        if latitude is not None and longitude is not None:
+            theater.latitude = latitude
+            theater.longitude = longitude
+            print(f"Updated {theater.theater_name} with lat: {latitude}, lon: {longitude}")
+        else:
+            print(f"Could not fetch coordinates for {theater.theater_location}")
+
+# Commit the updates to the database
 session.commit()
 
-print(f"{len(theaters_data)} theaters inserted successfully!")
+print("Latitude and Longitude updated successfully for all theaters!")
