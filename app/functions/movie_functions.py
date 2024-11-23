@@ -47,7 +47,22 @@ def get_movies_by_genre(genre: str):
     This function fetches the top 5 movies of a specific genre.
 
     Args:
-    - genre: The genre to filter movies by.
+    - genre: The genre to filter movies by. Valid genres include:
+      - Sci-Fi
+      - Romance
+      - Action/Sci-Fi
+      - Mystery/Thriller
+      - Drama/Fantasy
+      - Historical Drama
+      - Adventure
+      - Thriller
+      - Comedy/Drama
+      - Action/Fantasy
+      - Musical/Drama
+      - Adventure/Drama
+      - Horror
+      - Tech Thriller
+      - Slice of Life
 
     Returns:
     - List of top 5 movies that belong to the given genre, unmarshalled into a dictionary.
@@ -104,7 +119,22 @@ def get_movies_by_mood(mood: str):
     This function fetches the top 5 movies that match a specific mood or theme.
 
     Args:
-    - mood: The mood or theme to filter movies by (e.g., "happy", "sad", etc.).
+    - mood: The mood or theme to filter movies by. Valid moods include:
+      - Intense
+      - Romantic
+      - Adventurous
+      - Suspenseful
+      - Emotional
+      - Inspiring
+      - Exciting
+      - Creepy
+      - Bittersweet
+      - Heroic
+      - Uplifting
+      - Tense
+      - Haunting
+      - Engaging
+      - Lighthearted
 
     Returns:
     - List of top 5 movies that match the given mood, unmarshalled into a dictionary.
@@ -161,3 +191,52 @@ def get_movies_by_showtime(start_time: str, end_time: str):
         
         # Convert the result to dictionary format
         return [movie.__dict__ for movie in results]
+    
+def get_movies_by_name_with_showtimes_and_theatres(movie_name: str):
+    """
+    This function fetches the top 5 movies that have a specific name along with their showtimes and associated theater details.
+
+    Args:
+    - movie_name: The name of the movie to search for.
+
+    Returns:
+    - List of top 5 movies that match the given name, including their showtimes and theater details, unmarshalled into a dictionary.
+    """
+    with next(get_db()) as db:
+        # Query to fetch movies, showtimes, and theater details
+        results = db.execute(
+            select(Movie)
+            .join(Showtime, Showtime.movie_id == Movie.movie_id).limit(2)  # Join Movie with Showtime
+            .join(Theater, Theater.theater_id == Showtime.theater_id).limit(2)  # Join Showtime with Theater
+            .where(Movie.movie_name == movie_name)
+            .limit(2)  # Limit to top 5 results
+        ).scalars().all()
+
+        # Convert the results to dictionary format including showtimes and theater details
+        movies_with_showtimes = []
+        for movie in results:
+            movies_with_showtimes.append({
+                "movie_id": movie.movie_id,
+                "movie_name": movie.movie_name,
+                "movie_description": movie.movie_description,
+                "genre": movie.genre,
+                "cast": movie.cast,
+                "language": movie.language,
+                "mood": movie.mood,
+                "average_rating": movie.average_rating,
+                "showtimes": [
+                    {
+                        "showtime_id": showtime.showtime_id,
+                        "language": showtime.language,
+                        "show_time": showtime.show_time,
+                        "theater": {
+                            "theater_id": showtime.theater.theater_id,
+                            "theater_name": showtime.theater.theater_name,
+                            "theater_location": showtime.theater.theater_location
+                        }
+                    }
+                    for showtime in movie.showtimes  # Access the related showtimes
+                ]
+            })
+
+        return movies_with_showtimes

@@ -57,7 +57,6 @@ class SeatMap(Base):
     # Relationship
     showtime = relationship("Showtime", back_populates="seatmap")
 
-
 class Showtime(Base):
     __tablename__ = 'showtimes'
 
