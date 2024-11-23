@@ -12,8 +12,8 @@ async def signup(user_data: User, db: Session = Depends(get_db)) -> User:
     """
     try:
         # Create the user using the service layer
-        new_user = UserService.create_user(db=db, user_data=user_data.dict())
-        return User.model_validate(new_user)
+        new_user = UserService.create_user(db=db, user_data=user_data.model_dump())
+        return new_user
     except ValueError as e:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
 
@@ -39,7 +39,7 @@ async def login(user_credentials: User, db: Session = Depends(get_db)) -> dict:
 
     # Generate an access token
     # access_token = create_access_token({"sub": user.email})
-    return {"user": User.model_validate(user)}
+    return {"user": user}
 
 
 async def logout() -> dict:

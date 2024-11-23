@@ -12,7 +12,7 @@ class User(BaseModel):
     location: Optional[str]
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 # Movie Schema
@@ -28,7 +28,7 @@ class Movie(BaseModel):
     showtimes: List["Showtime"] = []  # Relationship to Showtime
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 # SeatMap Schema
@@ -41,7 +41,7 @@ class SeatMap(BaseModel):
     seat_status: bool
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 # Showtime Schema
@@ -56,7 +56,7 @@ class Showtime(BaseModel):
     seatmap: List[SeatMap] = []  # Relationship to SeatMap
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 # Theater Schema
@@ -67,7 +67,7 @@ class Theater(BaseModel):
     showtimes: List[Showtime] = []  # Relationship to Showtime
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class Transaction(BaseModel):

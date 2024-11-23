@@ -38,10 +38,12 @@ class Movie(Base):
     language = Column(String, nullable=False)
     mood = Column(String, nullable=False)
     average_rating = Column(Float, nullable=False)
+
+    # Relationship
     showtimes = relationship("Showtime", back_populates="movie")
     reviews = relationship("Review", back_populates="movie")  # New relationship
 
-    # SeatMap Table
+
 class SeatMap(Base):
     __tablename__ = 'seatmap'
 
@@ -56,7 +58,6 @@ class SeatMap(Base):
     showtime = relationship("Showtime", back_populates="seatmap")
 
 
-# Showtimes Table
 class Showtime(Base):
     __tablename__ = 'showtimes'
 
@@ -70,6 +71,7 @@ class Showtime(Base):
     theater = relationship("Theater", back_populates="showtimes")
     movie = relationship("Movie", back_populates="showtimes")
     seatmap = relationship("SeatMap", back_populates="showtime")
+
 
 class Theater(Base):
     __tablename__ = 'theaters'
