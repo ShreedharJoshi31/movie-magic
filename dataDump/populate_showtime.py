@@ -75,7 +75,7 @@ class Movie(Base):
     showtimes = relationship("Showtime", back_populates="movie")
 
 # Database connection (replace with your database URL)
-engine = create_engine('postgresql://avnadmin:AVNS_B__mg-mo4ERejoa7Rh9@pg-235500ec-shreedharjoshi03-f6ce.b.aivencloud.com:10885/defaultdb')  # Change URL for your database
+engine = create_engine('')  # Change URL for your database
 Session = sessionmaker(bind=engine)
 session = Session()
 

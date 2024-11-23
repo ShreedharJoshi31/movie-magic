@@ -17,7 +17,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
 # Step 1: Database connection
-engine = create_engine('postgresql://avnadmin:AVNS_B__mg-mo4ERejoa7Rh9@pg-235500ec-shreedharjoshi03-f6ce.b.aivencloud.com:10885/defaultdb')  # Update with your database URL
+engine = create_engine('')  # Update with your database URL
 Session = sessionmaker(bind=engine)
 session = Session()
 

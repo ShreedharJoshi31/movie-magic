@@ -18,7 +18,7 @@ class Movie(Base):
     average_rating = Column(Float, nullable=False)
 
 # Database connection (update with your PostgreSQL credentials)
-DATABASE_URL = "postgresql://avnadmin:AVNS_B__mg-mo4ERejoa7Rh9@pg-235500ec-shreedharjoshi03-f6ce.b.aivencloud.com:10885/defaultdb"
+DATABASE_URL = ""
 engine = create_engine(DATABASE_URL)
 
 # Create the movies table

@@ -74,7 +74,7 @@ class SeatMap(Base):
 from sqlalchemy import create_engine
 
 # SQLite example; replace with your database URL
-engine = create_engine('postgresql://avnadmin:AVNS_B__mg-mo4ERejoa7Rh9@pg-235500ec-shreedharjoshi03-f6ce.b.aivencloud.com:10885/defaultdb')
+engine = create_engine('')
 
 # Create all tables
 Base.metadata.create_all(engine)
