@@ -7,6 +7,7 @@ from llama_index.core.tools import FunctionTool
 from llama_index.core import Settings
 from app.functions.movie_functions import get_movies_by_name, get_movies_by_description, get_movies_by_genre, get_movies_by_cast, get_movies_by_language, get_movies_by_mood, get_movies_by_average_rating, get_movies_by_showtime
 from app.functions.payment_functions import create_razorpay_order
+from app.functions.theater_functions import get_nearby_theaters, get_accessible_theaters, get_movie_showtimes_near_location, get_showtimes_by_theater_name, get_theaters_by_location
 import pandas as pd
 
 
@@ -27,10 +28,17 @@ get_movies_by_mood_tool = FunctionTool.from_defaults(fn=get_movies_by_mood)
 get_movies_by_average_rating_tool = FunctionTool.from_defaults(fn=get_movies_by_average_rating)
 get_movies_by_showtime_tool = FunctionTool.from_defaults(fn=get_movies_by_showtime)
 create_razorpay_order_tool = FunctionTool.from_defaults(fn=create_razorpay_order)
+get_nearby_theaters_tool = FunctionTool.from_defaults(fn=get_nearby_theaters)
+get_accessible_theaters_tool = FunctionTool.from_defaults(fn=get_accessible_theaters)
+get_movie_showtimes_near_location_tool = FunctionTool.from_defaults(fn=get_movie_showtimes_near_location)
+get_showtimes_by_theater_name_tool = FunctionTool.from_defaults(fn=get_showtimes_by_theater_name)
+get_theaters_by_location_tool = FunctionTool.from_defaults(fn=get_theaters_by_location)
 
-agent = ReActAgent.from_tools([ get_movies_by_name_tool, get_movies_by_description_tool, get_movies_by_genre_tool, get_movies_by_cast_tool, get_movies_by_language_tool, get_movies_by_mood_tool, get_movies_by_average_rating_tool, get_movies_by_showtime_tool, create_razorpay_order_tool ], verbose=True)
+agent = ReActAgent.from_tools([ get_movies_by_name_tool, get_movies_by_description_tool, get_movies_by_genre_tool, get_movies_by_cast_tool, get_movies_by_language_tool, 
+                               get_movies_by_mood_tool, get_movies_by_average_rating_tool, get_movies_by_showtime_tool, create_razorpay_order_tool, 
+                               get_nearby_theaters_tool, get_accessible_theaters_tool, get_movie_showtimes_near_location_tool, get_showtimes_by_theater_name_tool, get_theaters_by_location_tool], verbose=True)
 
-response = agent.chat("Buy me a ticket for a movie which has john doe as actor")
+response = agent.chat("Find me accessible theaters near borivali, kandivali")
 
 print(response)
 

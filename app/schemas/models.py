@@ -80,6 +80,8 @@ class Theater(Base):
     theater_location = Column(String, nullable=False)
     latitude = Column(Float, nullable=True)  # New column for latitude
     longitude = Column(Float, nullable=True)  # New column for longitude
+    accessibility = Column(Boolean, nullable=True)  # New column for accessibility
+
 
     showtimes = relationship("Showtime", back_populates="theater")
 
