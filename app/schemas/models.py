@@ -104,7 +104,6 @@ class Booking(Base):
     booking_id = Column(Integer, primary_key=True, autoincrement=True)  # Unique booking ID
     user_id = Column(String, nullable=False)  # User ID (same as in Transaction)
     transaction_id = Column(String, ForeignKey('transactions.transaction_id'), nullable=False)  # FK to Transaction
-    user_name = Column(String, nullable=False)  # User's name
     movie_name = Column(String, nullable=False)  # Movie name
     theater = Column(String, nullable=False)  # Theater name
     show_time = Column(DateTime, nullable=False)  # Show date and time

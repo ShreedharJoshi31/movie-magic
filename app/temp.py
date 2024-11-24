@@ -18,7 +18,10 @@ if not openai_api_key:
 
 
 # settings
-Settings.llm = OpenAI(model="gpt-3.5-turbo", temperature=0.7, api_key=openai_api_key, system_prompt="Your name is FLASH. Greet everyone at the start of every message.")
+Settings.llm = OpenAI(model="gpt-3.5-turbo", temperature=0.7, api_key=openai_api_key, 
+                      system_prompt="""Your name is FLASH. Greet everyone at the start of every message. 
+                      You can streamline the entire booking process, you have all the function tools you need. You can start with getting movies using tools starting with get_movies
+                      using the data you fetch from there you can also find the theaters and showtimes, using showtimes you can further get available seats and book them for the user, you will need the user's email address for that.""")
 
 get_movies_by_name_tool = FunctionTool.from_defaults(fn=get_movies_by_name)
 get_movies_by_description_tool = FunctionTool.from_defaults(fn=get_movies_by_description)

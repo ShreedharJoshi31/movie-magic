@@ -13,12 +13,13 @@ from fastapi import WebSocket, WebSocketDisconnect
 from llama_index.core.agent import ReActAgent
 from llama_index.llms.openai import OpenAI
 from llama_index.core.tools import FunctionTool
-from llama_index.core import Settings
+from llama_index.core import Settings, PromptTemplate
 from app.functions.movie_functions import get_movies_by_name, get_movies_by_description, get_movies_by_genre, get_movies_by_cast, get_movies_by_language, get_movies_by_mood, get_movies_by_average_rating, get_movies_by_showtime
 from app.functions.payment_functions import create_razorpay_order
 from app.functions.theater_functions import get_nearby_theaters, get_accessible_theaters, get_movie_showtimes_near_location, get_showtimes_by_theater_name, get_theaters_by_location
-from app.functions.seatmap import get_seatmap_by_showtime, book_seat, cancel_booking, check_booking_by_email
+from app.functions.seatmap import get_seatmap_by_showtime, book_seat, cancel_booking, check_booking_by_email, get_seat_prices
 import pandas as pd
+from app.system_prompt import prompt
 load_dotenv()
 
 class AccessTokenRequest(BaseModel):
@@ -59,7 +60,11 @@ if not openai_api_key:
 
 
 # settings
-Settings.llm = OpenAI(model="gpt-4o", temperature=0.7, api_key=openai_api_key, system_prompt="Your name is FLASH. Greet everyone at the start of every message.")
+Settings.llm = OpenAI(model="gpt-4o", temperature=0.7, api_key=openai_api_key, system_prompt="""
+                      """)
+
+system_prompt =  prompt
+react_system_prompt = PromptTemplate(system_prompt)
 
 get_movies_by_name_tool = FunctionTool.from_defaults(fn=get_movies_by_name)
 get_movies_by_description_tool = FunctionTool.from_defaults(fn=get_movies_by_description)
@@ -81,12 +86,16 @@ get_seatmap_by_showtime_tool = FunctionTool.from_defaults(fn=get_seatmap_by_show
 book_seat_tool = FunctionTool.from_defaults(fn=book_seat)
 cancel_booking_tool = FunctionTool.from_defaults(fn=cancel_booking)
 check_booking_by_email_tool = FunctionTool.from_defaults(fn=check_booking_by_email)
+get_seat_prices_tool = FunctionTool.from_defaults(fn=get_seat_prices)
 
 agent = ReActAgent.from_tools([ get_movies_by_name_tool, get_movies_by_description_tool, get_movies_by_genre_tool, get_movies_by_cast_tool, get_movies_by_language_tool, 
                                get_movies_by_mood_tool, get_movies_by_average_rating_tool, get_movies_by_showtime_tool, create_razorpay_order_tool, 
                                get_nearby_theaters_tool, get_accessible_theaters_tool, get_movie_showtimes_near_location_tool, get_showtimes_by_theater_name_tool, get_theaters_by_location_tool,
-                               get_seatmap_by_showtime_tool, book_seat_tool, check_booking_by_email_tool], verbose=True, max_iterations=20)
-
+                               get_seatmap_by_showtime_tool, book_seat_tool, check_booking_by_email_tool, get_seat_prices_tool], verbose=True, max_iterations=50)
+# prompt_dict = agent.get_prompts()
+# for k, v in prompt_dict.items():
+#     print(f"Prompt: {k}\n\nValue: {v.template}")
+agent.update_prompts({"agent_worker:system_prompt": react_system_prompt})
 
 @app.get("/")
 async def root():
