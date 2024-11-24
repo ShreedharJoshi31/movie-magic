@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from sqlalchemy import select
 from app.database import get_db  # Import the get_db function
-from app.schemas.models import Movie, Showtime  # SQLAlchemy model
+from app.schemas.models import Movie, Showtime, Theater  # SQLAlchemy model
 from datetime import datetime
 
 def get_movies_by_name(movie_name: str):
