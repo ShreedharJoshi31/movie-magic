@@ -1,123 +1,84 @@
-from app.routes import dummy_routes, user_routes
-# from app.middleware.auth_middleware import AuthMiddleware
 import os
-from fastapi import FastAPI
-# from app.routes import chat_routes, document_routes
-# from app.middleware.auth_middleware import AuthMiddleware
-from pydantic import BaseModel
-from fastapi.middleware.cors import CORSMiddleware
+import sys
+import streamlit as st
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 from dotenv import load_dotenv
-from app.database import engine
-from app.schemas.models import Base
-from fastapi import WebSocket, WebSocketDisconnect
 from llama_index.core.agent import ReActAgent
 from llama_index.llms.openai import OpenAI
-from llama_index.core.tools import FunctionTool
 from llama_index.core import Settings, PromptTemplate
-from app.functions.movie_functions import get_movies_by_name, get_movies_by_description, get_movies_by_genre, get_movies_by_cast, get_movies_by_language, get_movies_by_mood, get_movies_by_average_rating, get_movies_by_showtime
-from app.functions.payment_functions import create_razorpay_order
-from app.functions.theater_functions import get_nearby_theaters, get_accessible_theaters, get_movie_showtimes_near_location, get_showtimes_by_theater_name, get_theaters_by_location
-from app.functions.seatmap import get_seatmap_by_showtime, book_seat, cancel_booking, check_booking_by_email, get_seat_prices
-import pandas as pd
 from app.system_prompt import prompt
+
+# Load environment variables
 load_dotenv()
 
-class AccessTokenRequest(BaseModel):
-    access_token: str
-
-app = FastAPI()
-
-origins = [
-    "*",
-]
-
-# Adding CORS middleware
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-
-# Initialize Amplify
-
-# Add middleware
-# app.add_middleware(BaseHTTPMiddleware, dispatch=AuthMiddleware())
-
-# Add CORS middleware to the FastAPI app
-Base.metadata.create_all(bind=engine)
-
-# Include routers
-app.include_router(dummy_routes.router, prefix="/dummy", tags=["dummy"])
-app.include_router(user_routes.router, prefix="/user", tags=["user"])
-
-
+# Load OpenAI API key
 openai_api_key = os.getenv("OPENAI_API_KEY")
 if not openai_api_key:
-    raise ValueError("OpenAI API key not found. Please set it in the .env file.")
+    st.error("OpenAI API key not found. Please set it in the .env file.")
+    st.stop()
 
+# Settings for LlamaIndex
+Settings.llm = OpenAI(model="gpt-4o", temperature=0.7, api_key=openai_api_key, system_prompt="")
 
-# settings
-Settings.llm = OpenAI(model="gpt-4o", temperature=0.7, api_key=openai_api_key, system_prompt="""
-                      """)
-
-system_prompt =  prompt
+# System prompt setup
+system_prompt = prompt
 react_system_prompt = PromptTemplate(system_prompt)
 
-get_movies_by_name_tool = FunctionTool.from_defaults(fn=get_movies_by_name)
-get_movies_by_description_tool = FunctionTool.from_defaults(fn=get_movies_by_description)
-get_movies_by_genre_tool = FunctionTool.from_defaults(fn=get_movies_by_genre)
-get_movies_by_cast_tool = FunctionTool.from_defaults(fn=get_movies_by_cast)
-get_movies_by_language_tool = FunctionTool.from_defaults(fn=get_movies_by_language)
-get_movies_by_mood_tool = FunctionTool.from_defaults(fn=get_movies_by_mood)
-get_movies_by_average_rating_tool = FunctionTool.from_defaults(fn=get_movies_by_average_rating)
-get_movies_by_showtime_tool = FunctionTool.from_defaults(fn=get_movies_by_showtime)
-create_razorpay_order_tool = FunctionTool.from_defaults(fn=create_razorpay_order)
-# theater functions
-get_nearby_theaters_tool = FunctionTool.from_defaults(fn=get_nearby_theaters)
-get_accessible_theaters_tool = FunctionTool.from_defaults(fn=get_accessible_theaters)
-get_movie_showtimes_near_location_tool = FunctionTool.from_defaults(fn=get_movie_showtimes_near_location)
-get_showtimes_by_theater_name_tool = FunctionTool.from_defaults(fn=get_showtimes_by_theater_name)
-get_theaters_by_location_tool = FunctionTool.from_defaults(fn=get_theaters_by_location)
-# seatmap functions
-get_seatmap_by_showtime_tool = FunctionTool.from_defaults(fn=get_seatmap_by_showtime)
-book_seat_tool = FunctionTool.from_defaults(fn=book_seat)
-cancel_booking_tool = FunctionTool.from_defaults(fn=cancel_booking)
-check_booking_by_email_tool = FunctionTool.from_defaults(fn=check_booking_by_email)
-get_seat_prices_tool = FunctionTool.from_defaults(fn=get_seat_prices)
-
-agent = ReActAgent.from_tools([ get_movies_by_name_tool, get_movies_by_description_tool, get_movies_by_genre_tool, get_movies_by_cast_tool, get_movies_by_language_tool, 
-                               get_movies_by_mood_tool, get_movies_by_average_rating_tool, get_movies_by_showtime_tool, create_razorpay_order_tool, 
-                               get_nearby_theaters_tool, get_accessible_theaters_tool, get_movie_showtimes_near_location_tool, get_showtimes_by_theater_name_tool, get_theaters_by_location_tool,
-                               get_seatmap_by_showtime_tool, book_seat_tool, check_booking_by_email_tool, get_seat_prices_tool], verbose=True, max_iterations=50)
-# prompt_dict = agent.get_prompts()
-# for k, v in prompt_dict.items():
-#     print(f"Prompt: {k}\n\nValue: {v.template}")
+# Initialize ReActAgent
+agent = ReActAgent.from_tools([], verbose=True, max_iterations=50)
 agent.update_prompts({"agent_worker:system_prompt": react_system_prompt})
 
-@app.get("/")
-async def root():
-    return {"message": "Welcome to the API"}
+# Streamlit App
+st.title("Movie Booking Assistant")
 
-@app.websocket("/ws/chat")
-async def websocket_endpoint(websocket: WebSocket):
-    await websocket.accept()
-    try:
-        while True:
-            message = await websocket.receive_text()
-            print(f"Received message: {message}")  # Debug print
+# Sidebar Chat Interface
+st.sidebar.header("Chat with the Assistant")
 
-            try:
-                response = agent.chat(message)
-                print(f"Agent response: {response}")  # Debug print
-                await websocket.send_json({"type": "response", "content":response.response})
-            except Exception as e:
-                print(f"Error in processing message: {e}")  # Debug print
-                await websocket.send_text(f"Error processing message: {str(e)}")
+# Initialize session state for chat history
+if "messages" not in st.session_state:
+    st.session_state.messages = []
 
-    except WebSocketDisconnect:
-        print("Client disconnected")
-    except Exception as e:
-        print(f"WebSocket error: {e}")
+# Input box for user message
+user_input = st.sidebar.text_input("Enter your message:", key="user_input")
+
+# Handle user input
+if st.sidebar.button("Send"):
+    if user_input.strip():
+        # Add user message to chat history
+        st.session_state.messages.append({"role": "user", "content": user_input})
+
+        try:
+            # Get agent response
+            response = agent.chat(user_input)
+
+            # Add agent response to chat history
+            st.session_state.messages.append({"role": "assistant", "content": response.response})
+        except Exception as e:
+            # Handle errors
+            error_message = f"Error: {e}"
+            st.sidebar.error(error_message)
+            st.session_state.messages.append({"role": "assistant", "content": error_message})
+    else:
+        st.sidebar.warning("Please enter a message.")
+
+# Display chat history in the sidebar
+for message in st.session_state.messages:
+    if message["role"] == "user":
+        st.sidebar.markdown(f"**You:** {message['content']}")
+    elif message["role"] == "assistant":
+        st.sidebar.markdown(f"**Assistant:** {message['content']}")
+
+# Main Page
+st.markdown(
+    """
+    ## Welcome to the Movie Booking Assistant
+    This assistant is powered by a custom ReActAgent to help you:
+    - Find movies, theaters, and showtimes
+    - Provide recommendations based on your mood, preferences, or location
+    - Handle seat bookings and cancellations
+    - Manage payments and more!
+    
+    Simply type your question or request in the chat box to get started.
+    """
+)
