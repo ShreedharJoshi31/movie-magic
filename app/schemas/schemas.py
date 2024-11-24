@@ -14,6 +14,21 @@ class User(BaseModel):
     class Config:
         from_attributes = True
 
+class Login(BaseModel):
+    email: EmailStr
+    password: str
+
+    class Config:
+        orm_mode = True
+
+class UserResponse(BaseModel):
+    id: int
+    username: str
+    email: EmailStr
+    location: Optional[str]
+
+    class Config:
+        from_attributes = True  # Use this instead of orm_mode in Pydantic v2
 
 # Movie Schema
 class Movie(BaseModel):
@@ -95,6 +110,22 @@ class Booking(BaseModel):
     class Config:
         orm_mode = True
 
+class SeatMapResponse(BaseModel):
+    seatmap_id: int
+    showtime_id: int
+    seat_no: str
+    seat_category: str
+    seat_price: float
+    seat_status: bool
+
+    class Config:
+        orm_mode = True
+
+class CategoryAvailabilityResponse(BaseModel):
+    category: str
+    total_seats: int
+    available_seats: int
+    price: float
 
 # Resolve forward references
 Movie.update_forward_refs()
