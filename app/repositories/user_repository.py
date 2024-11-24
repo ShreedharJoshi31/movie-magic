@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from typing import Optional, List
-from app.schemas.models import User  # Import your User model
-from app.repositories.base import BaseRepository  # Import the BaseRepository
+from schemas.models import User  # Import your User model
+from repositories.base import BaseRepository  # Import the BaseRepository
 
 
 class UserRepository(BaseRepository):

@@ -1,10 +1,10 @@
-from app.schemas.models import SeatMap, Transaction, Booking, Showtime, Movie, Theater
+from schemas.models import SeatMap, Transaction, Booking, Showtime, Movie, Theater
 from sqlalchemy.orm import Session
 import uuid
-from app.database import get_db  # Import the get_db function
+from database import get_db  # Import the get_db function
 from datetime import datetime
 from sqlalchemy import select
-from app.functions.payment_functions import create_razorpay_order
+from functions.payment_functions import create_razorpay_order
 
 def get_seatmap_by_showtime(showtime_id: int):
     """

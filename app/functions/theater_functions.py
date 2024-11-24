@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from sqlalchemy import select
-from app.database import get_db  # Import the get_db function
-from app.schemas.models import Theater, Showtime , Movie # SQLAlchemy model
+from database import get_db  # Import the get_db function
+from schemas.models import Theater, Showtime , Movie # SQLAlchemy model
 from datetime import datetime
 from math import radians, sin, cos, sqrt, atan2
 
