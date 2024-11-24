@@ -16,7 +16,7 @@ load_dotenv()
 openai_api_key = os.getenv("OPENAI_API_KEY")
 
 # Settings for LlamaIndex
-Settings.llm = OpenAI(model="gpt-4o", temperature=0.7, api_key=openai_api_key, system_prompt="")
+Settings.llm = OpenAI(model="gpt-3.5-turbo-0125", temperature=0.7, api_key=openai_api_key, system_prompt="")
 
 # System prompt setup
 system_prompt = prompt
