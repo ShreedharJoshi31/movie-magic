@@ -14,9 +14,6 @@ load_dotenv()
 
 # Load OpenAI API key
 openai_api_key = os.getenv("OPENAI_API_KEY")
-if not openai_api_key:
-    st.error("OpenAI API key not found. Please set it in the .env file.")
-    st.stop()
 
 # Settings for LlamaIndex
 Settings.llm = OpenAI(model="gpt-4o", temperature=0.7, api_key=openai_api_key, system_prompt="")
