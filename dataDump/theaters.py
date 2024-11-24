@@ -1,6 +1,6 @@
 import json
 import googlemaps
-from sqlalchemy import create_engine, Column, String, Float
+from sqlalchemy import create_engine, Column, String, Float, Boolean
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
@@ -18,6 +18,7 @@ class Theater(Base):
     theater_location = Column(String, nullable=False)
     latitude = Column(Float, nullable=True)  # New column for latitude
     longitude = Column(Float, nullable=True)  # New column for longitude
+    accessibility = Column(Boolean, nullable=True)  # New column for accessibility
 
 # Database connection (update with your PostgreSQL credentials)
 DATABASE_URL = ""  # Replace with your database URL
