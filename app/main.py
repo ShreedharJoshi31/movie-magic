@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 from llama_index.core.agent import ReActAgent
 from llama_index.llms.openai import OpenAI
 from llama_index.core import Settings, PromptTemplate
-from app.system_prompt import prompt
+from system_prompt import prompt
 
 # Load environment variables
 load_dotenv()
