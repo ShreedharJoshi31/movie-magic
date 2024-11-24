@@ -80,6 +80,10 @@ Session = sessionmaker(bind=engine)
 session = Session()
 
 def populate_showtimes():
+    """
+    Populates the 'showtimes' table with randomized intervals for showtimes
+    for the next month. Intervals are chosen randomly from predefined options.
+    """
     try:
         # Fetch all theaters and movies from the database
         theaters = session.query(Theater).all()
@@ -89,20 +93,19 @@ def populate_showtimes():
             print("No theaters or movies found in the database.")
             return
 
+        # Define random intervals (in hours) for showtimes
+        intervals = [3, 5, 8, 12, 24]  # Possible intervals between showtimes in hours
+
+        # Generate showtimes for the next month
+        today = datetime.now().replace(hour=10, minute=0, second=0, microsecond=0)  # Start at 10:00 AM today
+        end_date = today + timedelta(days=30)  # Generate showtimes for the next 30 days
+
         # Iterate through each theater
         for theater in theaters:
-            # Randomly select 3 to 8 shows for this theater
-            num_shows = random.randint(3, 8)
-            show_times = []
+            current_time = today
 
-            # Generate showtimes for the day (assuming the current day)
-            base_time = datetime.now().replace(hour=10, minute=0, second=0, microsecond=0)  # Start at 10:00 AM
-            for _ in range(num_shows):
-                show_times.append(base_time)
-                base_time += timedelta(hours=3)  # Increment by 3 hours for next show
-
-            # Assign random movies to the shows
-            for show_time in show_times:
+            while current_time < end_date:
+                # Randomly select a movie
                 random_movie = random.choice(movies)
 
                 # Create a new showtime entry
@@ -110,19 +113,26 @@ def populate_showtimes():
                     theater_id=theater.theater_id,
                     movie_id=random_movie.movie_id,
                     language=random_movie.language,  # Use movie language by default
-                    show_time=show_time
+                    show_time=current_time
                 )
                 session.add(new_showtime)
 
+                # Randomly increment the current time by one of the intervals
+                random_interval = random.choice(intervals)
+                current_time += timedelta(hours=random_interval)
+
         # Commit all new showtimes to the database
         session.commit()
-        print("Showtimes successfully populated!")
+        print("Showtimes successfully populated with randomized intervals for the next month!")
 
     except Exception as e:
         session.rollback()
         print(f"An error occurred: {e}")
     finally:
         session.close()
+
+# Call the function to populate the showtimes
+populate_showtimes()
 
 # Call the function to populate the showtimes
 populate_showtimes()
